@@ -1,38 +1,40 @@
-Role Name
-=========
+# ubuntu-ecs-agent
 
-A brief description of the role goes here.
+This Ansible role allows users thereof to install the [AWS ECS Agent](https://github.com/aws/amazon-ecs-agent) on Ubuntu-based instances typically running inside of an AWS environment.  This may be a requirement for some people who might not want to use the ECS-Optimized AMI from Amazon, or who may feel more comfortable working inside of Ubuntu-based environments exclusively.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* Ansible 2.2+
+* Tested on Ubuntu 14.04 and 16.04
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Please consult http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html for detailed information regarding the options below.
 
-Dependencies
-------------
+* `ubuntu_ecs_agent_loglevel`: `ECS_LOGLEVEL` (Default: info)
+* `ubuntu_ecs_agent_cluster_name`: `ECS_CLUSTER` (Default: default)
+* `ubuntu_ecs_agent_enable_iam_role`: `ECS_ENABLE_TASK_IAM_ROLE` (Default: true)
+* `ubuntu_ecs_agent_enable_task_iam_role_network_host`: `ECS_ENABLE_TASK_IAM_ROLE_NETWORK_HOST` (Default: true)
+* `ubuntu_ecs_agent_reserved_ports`: `ECS_RESERVED_PORTS` (Default: "[22, 2375, 2376, 51678]")
+* `ubuntu_ecs_agent_container_stop_timeout`: `ECS_CONTAINER_STOP_TIMEOUT` (Default: 30s)
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Dependencies
 
-Example Playbook
-----------------
+* `angstwad.docker_ubuntu` (https://galaxy.ansible.com/angstwad/docker_ubuntu/)
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+---
+- name: test-playbook | Test ubuntu-ecs-agent role
+  hosts: all
+  become: yes
+  vars:
+    - ubuntu_ecs_agent_cluster_name: TestCluster
+  roles:
+    - ubuntu-ecs-agent
+```
 
-License
--------
+## License
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Licensed under the MIT License. See the LICENSE file for details.
