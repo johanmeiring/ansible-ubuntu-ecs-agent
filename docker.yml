@@ -2,6 +2,6 @@
 - hosts: all
   become: yes
   roles:
-    - { role: ./,
+    - { role: ubuntu-ecs-agent,
         docker_opts: "-H tcp://127.0.0.1:4243 -H unix:///var/run/docker.sock --dns 8.8.8.8 --dns 8.8.4.4"
       }
