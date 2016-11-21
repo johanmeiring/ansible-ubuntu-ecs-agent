@@ -1,7 +1,5 @@
 ---
-- hosts: all
-  become: yes
+- hosts: localhost
+  remote_user: root
   roles:
-    - { role: ubuntu-ecs-agent,
-        docker_opts: "-H tcp://127.0.0.1:4243 -H unix:///var/run/docker.sock --dns 8.8.8.8 --dns 8.8.4.4"
-      }
+    - ubuntu-ecs-agent
