@@ -50,3 +50,5 @@
       ECS_ENABLE_TASK_IAM_ROLE_NETWORK_HOST: "{{ ubuntu_ecs_agent_enable_task_iam_role_network_host }}"
       ECS_RESERVED_PORTS: "{{ ubuntu_ecs_agent_reserved_ports }}"
       ECS_CONTAINER_STOP_TIMEOUT: "{{ ubuntu_ecs_agent_container_stop_timeout }}"
+      ECS_ENGINE_AUTH_TYPE: "{{ ubuntu_ecs_agent_auth_type }}"
+      ECS_ENGINE_AUTH_DATA: "{{ ubuntu_ecs_agent_auth_data }}"
