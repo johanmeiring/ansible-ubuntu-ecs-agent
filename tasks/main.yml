@@ -29,6 +29,14 @@
     jump: REDIRECT
     to_ports: 51679
 
+- name: create ecs environment file
+  template:
+    src=ecs.j2
+    dest=/etc/default/ecs
+    owner=root
+    group=root
+    mode=0644
+
 - name: Configure and run the ecs-agent container
   docker_container:
     name: ecs-agent
@@ -41,6 +49,7 @@
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/log/ecs/:/log
       - /var/lib/ecs/data:/data
+    env_file: /etc/default/ecs
     env:
       ECS_LOGFILE: /log/ecs-agent.log
       ECS_LOGLEVEL: "{{ ubuntu_ecs_agent_loglevel }}"
