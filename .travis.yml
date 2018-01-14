@@ -13,7 +13,6 @@ addons:
 install:
   # Install ansible
   - pip install ansible>=2.2 
-  - pip uninstall docker docker-py ; pip install docker==2.0.1
 
   # Check ansible version
   - ansible --version
