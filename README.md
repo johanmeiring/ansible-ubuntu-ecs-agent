@@ -19,6 +19,8 @@ Please consult http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ag
 * `ubuntu_ecs_agent_enable_task_iam_role_network_host`: `ECS_ENABLE_TASK_IAM_ROLE_NETWORK_HOST` (Default: true)
 * `ubuntu_ecs_agent_reserved_ports`: `ECS_RESERVED_PORTS` (Default: "[22, 2375, 2376, 51678]")
 * `ubuntu_ecs_agent_container_stop_timeout`: `ECS_CONTAINER_STOP_TIMEOUT` (Default: 30s)
+* `ubuntu_ecs_agent_auth_type`: `ECS_ENGINE_AUTH_TYPE` (Default: "")
+* `ubuntu_ecs_agent_auth_data`: `ECS_ENGINE_AUTH_DATA` (Default: "")
 
 ## Dependencies
 

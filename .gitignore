@@ -2,3 +2,4 @@
 *.retry
 tests/roles
 ansible.cfg
+*.sw?
