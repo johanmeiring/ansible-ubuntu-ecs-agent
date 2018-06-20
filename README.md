@@ -7,7 +7,7 @@ This Ansible role allows users thereof to install the [AWS ECS Agent](https://gi
 ## Requirements
 
 * Ansible 2.2+
-* Tested on Ubuntu 14.04 and 16.04
+* Tested on Ubuntu 14.04, 16.04 and 18.04
 
 ## Role Variables
 
@@ -24,7 +24,7 @@ Please consult http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ag
 
 ## Dependencies
 
-* `angstwad.docker_ubuntu` (https://galaxy.ansible.com/angstwad/docker_ubuntu/)
+* [geerlingguy.docker](https://galaxy.ansible.com/geerlingguy/docker/)
 
 ## Example Playbook
 
