@@ -12,6 +12,7 @@ galaxy_info:
     - vivid
     - wily
     - xenial
+    - bionic
 
   galaxy_tags:
     - amazon
@@ -23,4 +24,4 @@ galaxy_info:
     - ubuntu
 
 dependencies:
-  - { role: 'angstwad.docker_ubuntu'}
+  - { role: 'geerlingguy.docker'}
