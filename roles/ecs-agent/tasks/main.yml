@@ -2,7 +2,6 @@
 # Based on the instructions at http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-install.html
 
 - name: Make sure vital python packages are installed beforehand
-  become: true
   pip:
     name: "{{ item }}"
     state: latest
