@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all 
+  remote_user: ubuntu
   become: true
   roles:
     - ecs-agent
