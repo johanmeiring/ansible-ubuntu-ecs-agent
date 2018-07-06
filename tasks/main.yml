@@ -44,19 +44,19 @@
     group=root
     mode=0644
 
-# https://docs.aws.amazon.com/AmazonECS/latest/developerguide/example_user_data_scripts.html
-- name: create systemd docker service for ecs-agent
-  template:
-    src=docker-container@ecs-agent.service.j2
-    dest=/etc/systemd/system/docker-container@ecs-agent.service
-    owner=root
-    group=root
-    mode=0644
+# # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/example_user_data_scripts.html
+# - name: create systemd docker service for ecs-agent
+#   template:
+#     src=docker-container@ecs-agent.service.j2
+#     dest=/etc/systemd/system/docker-container@ecs-agent.service
+#     owner=root
+#     group=root
+#     mode=0644
 
-- name: enable ecs-agent systemd service
-  systemd:
-    name: docker-container@ecs-agent
-    enabled: yes
+# - name: enable ecs-agent systemd service
+#   systemd:
+#     name: docker-container@ecs-agent
+#     enabled: yes
 
 - name: Configure and run the ecs-agent container
   docker_container:
