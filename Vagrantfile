@@ -7,11 +7,11 @@ ENV['ANSIBLE_ROLES_PATH'] = "../"
 
 boxes = [
   {
-    :name => "ubuntu-1404",
-    :box => "ubuntu/trusty64",
+    :name => "ubuntu-1804",
+    :box => "ubuntu/bionic64",
     :ip => '10.0.77.12',
-    :cpu => "33",
-    :ram => "256"
+    :cpu => "2",
+    :ram => "4"
   },
 ]
 
@@ -32,7 +32,9 @@ Vagrant.configure("2") do |config|
       vms.vm.provision :ansible do |ansible|
         ansible.playbook = "tests/vagrant.yml"
         ansible.galaxy_role_file = "requirements.yml"
+        ansible.extra_vars = { ansible_python_interpreter: '/usr/bin/python3' }
         ansible.verbose = "vv"
+        ansible.compatibility_mode = "2.0"
       end
     end
   end
