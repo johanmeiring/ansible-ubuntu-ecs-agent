@@ -52,21 +52,23 @@
     group=root
     mode=0644
 
-# Uncomment this if you want to operate the docker container via systemd as advised by:
+# Option 1: Use systemd to start ECS agent container
 # https://docs.aws.amazon.com/AmazonECS/latest/developerguide/example_user_data_scripts.html
-#
-# - name: create systemd docker service for ecs-agent
-#   template:
-#     src=docker-container@ecs-agent.service.j2
-#     dest=/etc/systemd/system/docker-container@ecs-agent.service
-#     owner=root
-#     group=root
-#     mode=0644
-#
-# - name: enable ecs-agent systemd service
-#   systemd:
-#     name: docker-container@ecs-agent
-#     enabled: yes
+
+- name: create systemd docker service for ecs-agent
+  template:
+    src=docker-container@ecs-agent.service.j2
+    dest=/etc/systemd/system/docker-container@ecs-agent.service
+    owner=root
+    group=root
+    mode=0644
+  when: ubuntu_ecs_agent_start_mode == "systemd"
+
+- name: enable ecs-agent systemd service
+  systemd:
+    name: docker-container@ecs-agent
+    enabled: yes
+  when: ubuntu_ecs_agent_start_mode == "systemd"
 
 # https://docs.aws.amazon.com/batch/latest/userguide/create-batch-ami.html
 - name: Remove the persistent data checkpoint file from ecs-agent
@@ -74,6 +76,7 @@
     state: absent
     path: "/var/lib/ecs/data/ecs_agent_data.json"
 
+# Option 2: manage ECS agent container with Docker natively
 - name: Configure and run the ecs-agent container
   docker_container:
     name: ecs-agent
@@ -88,3 +91,4 @@
       - /var/lib/ecs/data:/data
     env_file: /etc/default/ecs
     privileged: yes # otherwise we get: [WARN] Disabling TaskCPUMemLimit because agent /sys/fs/cgroup/systemd/ecs: read-only file system
+  when: ubuntu_ecs_agent_start_mode == "docker"
