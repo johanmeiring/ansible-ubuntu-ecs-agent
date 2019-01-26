@@ -1,6 +1,6 @@
 # ubuntu-ecs-agent
 
-[![Build Status](https://travis-ci.org/johanmeiring/ansible-ubuntu-ecs-agent.svg?branch=master)](https://travis-ci.org/johanmeiring/ansible-ubuntu-ecs-agent)
+[![Build Status](https://travis-ci.com/johanmeiring/ansible-ubuntu-ecs-agent.svg?branch=master)](https://travis-ci.com/johanmeiring/ansible-ubuntu-ecs-agent)
 
 This Ansible role allows users thereof to install the [AWS ECS Agent](https://github.com/aws/amazon-ecs-agent) on Ubuntu-based instances typically running inside of an AWS environment.  This may be a requirement for some people who might not want to use the ECS-Optimized AMI from Amazon, or who may feel more comfortable working inside of Ubuntu-based environments exclusively.
 
