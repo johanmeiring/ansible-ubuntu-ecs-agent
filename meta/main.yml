@@ -2,7 +2,7 @@ galaxy_info:
   author: Johan Meiring
   description: "Deploy AWS ECS Agent on Ubuntu"
   license: MIT
-  min_ansible_version: 2.2
+  min_ansible_version: 2.5
 
   platforms:
   - name: Ubuntu

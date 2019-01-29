@@ -6,7 +6,7 @@ This Ansible role allows users thereof to install the [AWS ECS Agent](https://gi
 
 ## Requirements
 
-* Ansible 2.2+
+* Ansible 2.5+
 * Tested on Ubuntu 14.04, 16.04 and 18.04
 
 ## Role Variables
@@ -21,6 +21,7 @@ Please consult http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ag
 * `ubuntu_ecs_agent_container_stop_timeout`: `ECS_CONTAINER_STOP_TIMEOUT` (Default: 30s)
 * `ubuntu_ecs_agent_auth_type`: `ECS_ENGINE_AUTH_TYPE` (Default: "")
 * `ubuntu_ecs_agent_auth_data`: `ECS_ENGINE_AUTH_DATA` (Default: "")
+* `ubuntu_ecs_agent_start_mode`: Set to "docker" or "systemd", depending how you would like to start the agent container (Default: "docker")
 
 ## Dependencies
 
